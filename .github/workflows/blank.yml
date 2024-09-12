@@ -1,0 +1,12 @@
+name: Share data between jobs
+
+on: [push]
+
+jobs:
+  job_1:
+    name: Add 3 and 7
+    runs-on: codebuild-aws-shr-${{ github.run_id }}-${{ github.run_attempt }}-with-buildspec
+    steps:
+      - shell: bash
+        run: |
+          expr 3 + 7 > math-homework.txt
